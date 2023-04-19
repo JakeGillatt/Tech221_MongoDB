@@ -35,6 +35,10 @@ availability and fault tolerance.
 geospatial indexing for location-based queries. These features make it suitable for a wide range of applications, from web and mobile 
 applications to content management systems and big data solutions.
 
+# Mongo architecture diagram:
+
+![Dev-Environment.png](mongo-architecture.png)
+
 #
 # What is the history of MongoDB?
 
