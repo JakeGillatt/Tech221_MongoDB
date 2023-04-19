@@ -37,7 +37,7 @@ applications to content management systems and big data solutions.
 
 # Mongo architecture diagram:
 
-![Dev-Environment.png](mongo-architecture.png)
+![Dev-Environment.png](mongo-architecture2.png)
 
 #
 # What is the history of MongoDB?
