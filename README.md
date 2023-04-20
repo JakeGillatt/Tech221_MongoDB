@@ -105,3 +105,25 @@ print(result)
 This code connects to a MongoDB server running on the local machine on the default port 27017, specifies the name of the database to use ("mydatabase"), and retrieves a 
 single document from a collection named "mycollection" that has a "name" field with the value "Jake".
 
+#
+# How to connect your app VM to your database VM:
+
+- Once both VM's are launched with `vagrant up` and are finished loading:
+
+1. In the db VM, use `sudo nano /etc/mongod.conf` to edit the mongod.conf file
+2. Inside the file, under 'network interfaces' change the ip to `0.0.0.0` - it should look like the following:
+```
+# network interfaces
+net:
+  port: 27017
+  bindIp: 0.0.0.0
+```
+3. CTRL + X, press y and then enter to save the file
+4. Now enter `sudo systemctl restart mongod` to restart mongodb
+5. Enter `sudo systemctl enable mongod` to re-enable mongodb
+6. Now in the app VM we need to add a variable to the .bashrc file. Use `sudo nano .bashrc` to edit the file. 
+7. Go to the bottom of the file and add the variable `export DB_HOST=mongodb://192.168.10.150:27017/posts` - this provides the connection ip information
+8. Save the file and enter `source .bashrc` to reload the file
+9. Use `printenv DB_HOST` to check the connection
+10. Enter `cd app` to go into the app folder and then use `node seeds/seed.js` to seed the database
+11. Put the address into your browser to check it's worked - `http://192.168.10.100:3000/posts` - you should recieve the posts page of the app
